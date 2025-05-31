@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Book Generator";
+}
+
+<div class="container my-4">
+    <h2 class="mb-4 text-primary">📚 Book Generator</h2>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="region" class="form-label">Language/Region</label>
+                <select id="region" class="form-select">
+                    <option value="en">English (USA)</option>
+                    <option value="de">German (Germany)</option>
+                    <option value="ja">Japanese (Japan)</option>
+                    <option value="ge">Georgian (Georgia)</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="seed" class="form-label">Seed</label>
+                <div class="input-group">
+                    <input type="number" id="seed" class="form-control" value="12345" />
+                    <button class="btn btn-outline-secondary" type="button" onclick="randomizeSeed()">🎲</button>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="likes" class="form-label">Avg Likes per Book: <span id="likes-val" class="fw-bold">3.5</span></label>
+                <input type="range" id="likes" class="form-range" min="0" max="10" step="0.1" value="3.5" />
+            </div>
+
+            <div class="col-md-3">
+                <label for="reviews" class="form-label">Avg Reviews per Book</label>
+                <input type="number" id="reviews" class="form-control" step="0.1" value="4.7" />
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table id="book-table" class="table table-bordered table-striped table-hover align-middle">
+            <thead class="table-primary">
+                <tr>
+                    <th>#</th>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Publisher</th>
+                    <th>Likes</th>
+                    <th>Reviews</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/book.js"></script>

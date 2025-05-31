@@ -1,0 +1,15 @@
+﻿@using BookDataGeneratorApp.Models
+@model List<BookViewModel>
+
+@foreach (var book in Model)
+{
+    <tr>
+        <td>@book.Index</td>
+        <td>@book.ISBN</td>
+        <td>@book.Title</td>
+        <td>@string.Join(", ", book.Authors)</td>
+        <td>@book.Publisher</td>
+        <td>@book.Likes</td>
+        <td>@book.Reviews</td>
+    </tr>
+}
