@@ -6,7 +6,7 @@ function getParams() {
         region: $("#region").val(),
         seed: parseInt($("#seed").val()),
         avgLikes: parseFloat($("#likes").val()),
-        avgReviews: parseFloat($("#reviews").val()),
+        avgReviews: parseFloat($("#reviews").val())
     };
 }
 
@@ -31,7 +31,7 @@ function loadBatch(count) {
             currentIndex += count;
         },
         complete: function () {
-            isLoading = false; 
+            isLoading = false;
         }
     });
 }
@@ -62,3 +62,12 @@ $(window).on("scroll", function () {
 $(document).ready(function () {
     resetTable();
 });
+
+
+$(document).on("click", ".book-row", function () {
+    const index = $(this).data("index");
+    const $detailRow = $(`.book-details[data-index="${index}"]`);
+    $detailRow.toggle(); 
+});
+
+

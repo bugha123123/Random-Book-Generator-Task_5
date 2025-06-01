@@ -1,4 +1,6 @@
-﻿namespace BookDataGeneratorApp.Models
+﻿using Task_5.Models;
+
+namespace BookDataGeneratorApp.Models
 {
     public class BookViewModel
     {
@@ -9,5 +11,7 @@
         public string Publisher { get; set; }
         public int Likes { get; set; }
         public int Reviews { get; set; }
+
+        public List<Review> ReviewList { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿@using BookDataGeneratorApp.Models
+
 @model List<BookViewModel>
 
 @foreach (var book in Model)
 {
-    <tr>
+    <tr class="book-row" data-index="@book.Index">
         <td>@book.Index</td>
         <td>@book.ISBN</td>
         <td>@book.Title</td>
@@ -12,4 +13,34 @@
         <td>@book.Likes</td>
         <td>@book.Reviews</td>
     </tr>
+    <tr class="book-details" data-index="@book.Index" style="display: none;">
+        <td colspan="7">
+            <div class="d-flex gap-3 p-3 bg-light border rounded align-items-start">
+
+                <img src="https://picsum.photos/seed/@book.ISBN/200/300"
+                     alt="Book Cover"
+                     class="img-thumbnail"
+                     style="height: 200px; width: auto;" />
+
+                <div>
+                    <h4 class="mb-2">@book.Title by @string.Join(", ", book.Authors)</h4>
+                    <h5 class="mb-3">Reviews (@book.Reviews):</h5>
+
+                    <ul class="list-group list-group-flush" style="max-height: 150px; overflow-y: auto;">
+                        @foreach (var review in book.ReviewList)
+                        {
+                            <li class="list-group-item px-0">
+                                <strong>@review.Reviewer:</strong> @review.Text
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </td>
+    </tr>
+
 }
+
+
+
