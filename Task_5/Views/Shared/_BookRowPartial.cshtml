@@ -21,10 +21,19 @@
                      alt="Book Cover"
                      class="img-thumbnail"
                      style="height: 200px; width: auto;" />
-
                 <div>
-                    <h4 class="mb-2">@book.Title by @string.Join(", ", book.Authors)</h4>
-                    <h5 class="mb-3">Reviews (@book.Reviews):</h5>
+                    <h4 class="mb-2">@book.Title</h4>
+                    <p class="mb-1">
+                        <strong>Authors:</strong> @string.Join(", ", book.Authors)
+                    </p>
+                    <p class="mb-1">
+                        <strong>Publisher:</strong> @book.Publisher
+                    </p>
+                    <p class="mb-1">
+                        <strong>Likes:</strong> @book.Likes
+                    </p>
+
+                    <h5 class="mt-3 mb-3">Reviews (@book.Reviews):</h5>
 
                     <ul class="list-group list-group-flush" style="max-height: 150px; overflow-y: auto;">
                         @foreach (var review in book.ReviewList)
@@ -35,6 +44,7 @@
                         }
                     </ul>
                 </div>
+
 
             </div>
         </td>
