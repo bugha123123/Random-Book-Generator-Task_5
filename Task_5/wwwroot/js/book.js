@@ -11,8 +11,8 @@ function getParams() {
 }
 
 function loadBatch(count) {
-    if (isLoading) return; 
-    isLoading = true;     
+    if (isLoading) return;
+    isLoading = true;
 
     const params = getParams();
     const data = {
