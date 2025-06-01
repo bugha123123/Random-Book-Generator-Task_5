@@ -1,4 +1,5 @@
 ﻿let currentIndex = 1;
+let isLoading = false;
 
 function getParams() {
     return {
@@ -10,6 +11,9 @@ function getParams() {
 }
 
 function loadBatch(count) {
+    if (isLoading) return; 
+    isLoading = true;     
+
     const params = getParams();
     const data = {
         ...params,
@@ -25,6 +29,9 @@ function loadBatch(count) {
         success: function (html) {
             $('#book-table tbody').append(html);
             currentIndex += count;
+        },
+        complete: function () {
+            isLoading = false; 
         }
     });
 }

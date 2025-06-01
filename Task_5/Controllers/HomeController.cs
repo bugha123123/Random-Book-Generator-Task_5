@@ -14,7 +14,9 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Generate([FromBody] BookRequest request)
     {
-        Randomizer.Seed = new Random(request.Seed);
+        var rng = new Random(request.Seed + request.StartIndex);
+        Randomizer.Seed = new Random(request.Seed + request.StartIndex); 
+
         var faker = new Faker(request.Region);
 
         var books = new List<BookViewModel>();
@@ -23,11 +25,11 @@ public class HomeController : Controller
             int idx = request.StartIndex + i;
 
             int likes = (int)Math.Floor(request.AvgLikes);
-            if (Randomizer.Seed.NextDouble() < (request.AvgLikes - likes))
+            if (rng.NextDouble() < (request.AvgLikes - likes))
                 likes += 1;
 
             int reviews = (int)Math.Floor(request.AvgReviews);
-            if (Randomizer.Seed.NextDouble() < (request.AvgReviews - reviews))
+            if (rng.NextDouble() < (request.AvgReviews - reviews))
                 reviews += 1;
 
             var book = new BookViewModel
@@ -46,4 +48,6 @@ public class HomeController : Controller
 
         return PartialView("_BookRowPartial", books);
     }
+
+
 }
